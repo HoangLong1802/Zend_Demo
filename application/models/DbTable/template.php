@@ -1,11 +1,11 @@
 <?php
 
-class Application_Model_DbTable_Albums extends Zend_Db_Table_Abstract
+class Application_Model_DbTable_Template extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'albums';
+    protected $_name = 'template';
 
-    public function getAlbum($id)
+    public function getTemplate($id)
     {
         $id = (int)$id;
         $row = $this->fetchRow('id = ' . $id);
@@ -15,11 +15,13 @@ class Application_Model_DbTable_Albums extends Zend_Db_Table_Abstract
         return $row->toArray();
     }
 
-    public function addAlbum($artist, $title)
+    public function addTemplate($name, $controller, $action, $note)
     {
         $data = array(
-            'artist' => $artist,
-            'title' => $title,
+            'name' => $name,
+            'controller' => $controller,
+            'action' => $action,
+            'note' => $note,
         );
         $this->insert($data);
     }
