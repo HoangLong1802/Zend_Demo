@@ -1,43 +1,133 @@
-<style>
-    a:link,
-    a:visited
-    {
-        color: #0398CA;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    .main {
+      width: 100%;
+      height: 100vh;
     }
 
-    span#zf-name
-    {
-        color: #91BE3F;
+    .table_template {
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
-    div#welcome
-    {
-        color: #FFFFFF;
-        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
-        width:  600px;
-        height: 400px;
-        border: 2px solid #444444;
-        overflow: hidden;
-        text-align: center;
+    .table_template .form_add_template {
+      border: 1px solid #3042ab;
+      border-radius: 5%;
+      width: 25%;
+      height: 80vh;
+      padding: 0 5% 0% 5%;
     }
 
-    div#more-information
-    {
-        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
-        height: 100%;
+    .form_add_template input,
+    textarea {
+      border-radius: 5px;
+      border: #409dbf 1px solid;
+      box-shadow: #000;
+      box-sizing: border-box;
+      padding: 4% 5% 4% 7%;
     }
-</style>
-<div id="welcome">
-    <h1>Welcome to the <span id="zf-name">Zend Framework!</span></h1>
 
-    <h3>This is your project's main page</h3>
+    .form_add_template input:hover {
+      border: #1f566b 1px solid;
+      color: #103746;
+    }
 
-    <div id="more-information">
-        <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
-        <p>
-            Helpful Links: <br />
-            <a href="http://framework.zend.com/">Zend Framework Website</a> |
-            <a href="http://framework.zend.com/manual/en/">Zend Framework Manual</a>
-        </p>
+    .form_add_template #submit {
+      border: #409dbf 1px solid;
+      background-color: blue;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form_add_template #note {
+      word-wrap: break-word;
+      padding: 0;
+      padding-left: 2%;
+    }
+
+    .form_add_template .note_text {
+      margin-bottom: 10%;
+    }
+
+    .form_add_template #file {
+      border: none;
+    }
+
+    .form_add_template #submit:hover {
+      background-color: #000;
+    }
+
+    .form_add_template .form_text {
+      position: absolute;
+      bottom: 50%;
+      left: 0;
+    }
+
+    .form_add_template .tr__control {
+      position: relative;
+    }
+
+    .form_add_template .header {
+      text-align: left;
+      font-size: 22px;
+      padding: 5%;
+    }
+  </style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template Page</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="table_template">
+      <table class="form_add_template">
+        <tr>
+          <th class="header">Upload Template</th>
+        </tr>
+        <tr class="tr__control">
+          <td>
+            <p class="form_text">Name</p>
+            <input type="text" name="name" id="name" />
+          </td>
+        </tr>
+        <tr class="tr__control">
+          <td>
+            <p class="form_text">Controller</p>
+            <input type="text" name="controller" id="controller" />
+          </td>
+        </tr>
+        <tr class="tr__control">
+          <td>
+            <p class="form_text">Action</p>
+            <input type="text" name="action" id="action" />
+          </td>
+        </tr>
+        <tr class="tr__control">
+          <td>
+            <p class="note_text form_text">Note</p>
+            <textarea name="note" id="note" cols="25" rows="3"></textarea>
+          </td>
+        </tr>
+        <tr class="tr__control">
+          <td>
+            <p class="form_text">file</p>
+            <input type="file" name="file" id="file" />
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center">
+            <input type="submit" value="Submit" id="submit" />
+          </td>
+        </tr>
+      </table>
     </div>
-</div>
+  </div>
+</body>
+
+</html>
