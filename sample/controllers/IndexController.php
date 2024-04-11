@@ -50,7 +50,6 @@ class IndexController extends Zend_Controller_Action
                 $title = $form->getValue('title');
                 $albums = new Application_Model_DbTable_Albums();
                 $albums->updateAlbum($id, $artist, $title);
-                
                 $this->_helper->redirector('index');
             } else {
                 $form->populate($formData);
