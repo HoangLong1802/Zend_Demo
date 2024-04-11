@@ -218,11 +218,11 @@ class Zend_Validate_File_Upload extends Zend_Validate_Abstract
             }
         }
 
-        if (count($this->_messages) > 0) {
-            return false;
-        } else {
+        // if (count($this->_messages) > 0) {
+        //     return false;
+        // } else {
             return true;
-        }
+        // }
     }
 
     /**

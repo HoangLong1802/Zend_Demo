@@ -1,1 +1,72 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Page</title>
+</head>
+
+<body>
+    <div class="main">
+        <form action="/index/add" method="POST" enctype="multipart/form-data" target="my_iframe">
+            <div class="table_template">
+                <table class="form_add_template">
+                    <tr>
+                        <th class="header">Upload Template</th>
+                    </tr>
+                    <tr class="tr__control">
+
+                        <td>
+                            <p class="form_text">Name</p>
+                            <input type="text" name="name" id="name" autocomplete="off" />
+                        </td>
+                    </tr>
+                    <tr class="tr__control">
+                        <td>
+                            <p class="form_text">Controller</p>
+                            <input type="text" name="controller" id="controller" autocomplete="off" />
+                        </td>
+                    </tr>
+                    <tr class="tr__control">
+                        <td>
+                            <p class="form_text">Action</p>
+                            <input type="text" name="action" id="action" autocomplete="off" />
+                        </td>
+                    </tr>
+                    <tr class="tr__control">
+                        <td>
+                            <p class="note_text form_text">Note</p>
+                            <textarea name="note" id="note" cols="25" rows="3" autocomplete="off"></textarea>
+                        </td>
+                    </tr>
+                    <tr class="tr__control">
+                        <td>
+                            <p class="form_text">file</p>
+                            <input type="file" name="file" id="file" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center;">
+                            <a href="/index/view">View Data</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <iframe name="my_iframe" src=""></iframe>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            <input type="submit" value="Submit" id="submit" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

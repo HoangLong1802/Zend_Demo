@@ -31,12 +31,14 @@ class Application_Form_Template extends Zend_Form
         $note = new Zend_Form_Element_Text('note');
         $note->setLabel('note')
             ->addFilter('StripTags')
-            ->addFilter('StringTrim')
-            ->addValidator('NotEmpty');
-            
+            ->addFilter('StringTrim');
+        $file = new Zend_Form_Element_File('file');
+        $file->setLabel('file')
+            ->addFilter('StripTags')
+            ->addFilter('StringTrim');
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setAttrib('id', 'submitbutton');
 
-        $this->addElements(array($id, $name, $controller, $action, $note, $submit));
+        $this->addElements(array($id, $name, $controller, $action, $note, $file, $submit));
     }
 }?>

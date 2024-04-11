@@ -10,40 +10,49 @@
 
 <body>
   <div class="main">
-      <form action="<?php echo $this->url(array('index' => 'template', 'action' => 'add')); ?>" method="POST">
+      <form action="/index/add" method="POST" enctype="multipart/form-data" target="my_iframe">
       <div class="table_template">
       <table class="form_add_template">
         <tr>
           <th class="header">Upload Template</th>
         </tr>
         <tr class="tr__control">
+        
           <td>
             <p class="form_text">Name</p>
-            <input type="text" name="name" required id="name" />
+            <input type="text" name="name" id="name" autocomplete="off"/>
           </td>
         </tr>
         <tr class="tr__control">
           <td>
             <p class="form_text">Controller</p>
-            <input type="text" name="controller" required id="controller" />
+            <input type="text" name="controller" id="controller" autocomplete="off"/>
           </td>
         </tr>
         <tr class="tr__control">
           <td>
             <p class="form_text">Action</p>
-            <input type="text" name="action" required id="action" />
+            <input type="text" name="action" id="action" autocomplete="off"/>
           </td>
         </tr>
         <tr class="tr__control">
           <td>
             <p class="note_text form_text">Note</p>
-            <textarea name="note" id="note" cols="25" rows="3"></textarea>
+            <textarea name="note" id="note" cols="25" rows="3" autocomplete="off"></textarea>
           </td>
         </tr>
         <tr class="tr__control">
           <td>
             <p class="form_text">file</p>
             <input type="file" name="file" id="file" />
+          </td>
+        </tr>
+        <tr><th style="text-align: center;">
+          <a href="/index/view">View Data</a>      
+        </th></tr>
+        <tr>
+          <td>
+            <iframe name="my_iframe" src=""></iframe>
           </td>
         </tr>
         <tr>

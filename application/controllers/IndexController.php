@@ -10,8 +10,21 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // $albums = new Application_Model_DbTable_Albums();
-        // $this->view->albums = $albums->fetchAll();
+       
+    }
+    public function searchAction(){
+
+        $name = $this->_getParam('search');
+        $template = new Application_Model_DbTable_Template();
+        $this->view->template = $template->getTemplate($name);
+        var_dump($template->getTemplate($name));exit;
+        $where = array();
+        $where[] = $name; // 1 could be a variable
+        $result = $template->fetchAll($where);
+    }
+    public function viewAction(){
+        $template = new Application_Model_DbTable_Template();
+        $this->view->template = $template->fetchAll();
     }
 
     public function addAction()
@@ -25,19 +38,43 @@ class IndexController extends Zend_Controller_Action
             $form->submit->setLabel('Add');
             $this->view->form = $form;
             if($form->isValid($formData)){
-                $name = $form->getValue('name');
-                $controller = $form->getValue('controller');
-                $action = $form->getValue('action');
-                $note = $form->getValue('note');
-                $template = new Application_Model_DbTable_Template();
-                // $template->addTemplate($name, $controller, $action, $note);
-                $template->insert(array(
-                    'name'=>$name,
-                    'controller'=>$controller,
-                    'action'=>$action,
-                    'note'=>$note
-                ));
-                $this->_helper->redirector('index');
+                echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">';
+                try {
+                    $name = $form->getValue('name');
+                    $controller = $form->getValue('controller');
+                    $action = $form->getValue('action');
+                    if(!$name || !$controller || !$action)
+                        throw new Exception("Chưa nhập đủ thông tin");
+                    $note = $form->getValue('note');
+                    $file = $_FILES['file']['name'];
+                    if (!$file)
+                        throw new Exception("không có file");
+                    $url = "files/" . $file;
+                    $file_type= strtolower(pathinfo($url)['extension']);
+                    $file_excep = ['xlsx', 'xlsm', 'xls', 'xltx', 'docs','docm','doc','docx'];
+                        // if(!in_array($file_type,$file_excep)){
+                        //     throw new Exception("Không được chuyền file nào khác ngoài file excel và worword vào");
+                        // }
+                    move_uploaded_file($_FILES["file"]['tmp_name'], $url);
+
+                    $template = new Application_Model_DbTable_Template();
+
+                    $template->insert(
+                        array(
+                            'name' => $name,
+                            'controller' => $controller,
+                            'action' => $action,
+                            'note' => $note,
+                            'file' => $file
+                        )
+                    );
+                    exit('<div class="alert alert-success"><strong>Thành công!</strong></div>');
+                } catch (Exception $e) {
+                    exit('<div class="alert alert-danger">Có lỗi sảy ra: ' . $e->getMessage() . '</div>');
+                }
+
+                
+                
             } else {
                 $form->populate($formData);
                     }
